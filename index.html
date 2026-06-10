@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chefrel Baracol | Business Process Automation Specialist</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --bg:#0b0f19;
+    --bg-light:#121826;
+    --card:#161f33;
+    --primary:#4f8cff;
+    --primary-light:#82acff;
+    --text:#f5f7fa;
+    --muted:#9aa7bd;
+    --success:#00d084;
+    --border:rgba(255,255,255,.08);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.7;
+}
+
+.container{
+    width:min(1200px,92%);
+    margin:auto;
+}
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    backdrop-filter:blur(12px);
+    background:rgba(11,15,25,.8);
+    border-bottom:1px solid var(--border);
+}
+
+.nav-content{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:1rem 0;
+}
+
+.logo{
+    font-weight:800;
+    letter-spacing:.08em;
+}
+
+.nav-links{
+    display:flex;
+    gap:2rem;
+}
+
+.nav-links a{
+    color:var(--muted);
+    text-decoration:none;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+.hero{
+    min-height:90vh;
+    display:flex;
+    align-items:center;
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.badge{
+    display:inline-block;
+    background:rgba(79,140,255,.15);
+    color:var(--primary-light);
+    padding:.5rem 1rem;
+    border-radius:999px;
+    margin-bottom:1rem;
+    border:1px solid rgba(79,140,255,.25);
+}
+
+h1{
+    font-size:clamp(3rem,7vw,5rem);
+    line-height:1;
+    margin-bottom:1rem;
+}
+
+.gradient{
+    background:linear-gradient(135deg,#4f8cff,#82acff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.subtitle{
+    font-size:1.3rem;
+    color:var(--muted);
+    margin-bottom:2rem;
+}
+
+.cta{
+    display:flex;
+    gap:1rem;
+    flex-wrap:wrap;
+    margin-top:2rem;
+}
+
+.btn{
+    padding:1rem 1.5rem;
+    border-radius:12px;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn-primary{
+    background:var(--primary);
+    color:white;
+}
+
+.btn-primary:hover{
+    transform:translateY(-2px);
+}
+
+.btn-outline{
+    border:1px solid var(--border);
+    color:white;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:1rem;
+    margin-top:4rem;
+}
+
+.stat{
+    background:var(--bg-light);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:1.5rem;
+}
+
+.stat h3{
+    color:var(--primary-light);
+    font-size:2rem;
+}
+
+section{
+    padding:100px 0;
+}
+
+.section-title{
+    font-size:2.5rem;
+    margin-bottom:1rem;
+}
+
+.section-subtitle{
+    color:var(--muted);
+    margin-bottom:3rem;
+}
+
+.about{
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:3rem;
+}
+
+.skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.8rem;
+}
+
+.skill{
+    padding:.7rem 1rem;
+    border-radius:999px;
+    background:var(--card);
+    border:1px solid var(--border);
+}
+
+.projects{
+    display:grid;
+    gap:2rem;
+}
+
+.project{
+    background:var(--bg-light);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:2rem;
+    transition:.3s;
+}
+
+.project:hover{
+    transform:translateY(-4px);
+    border-color:rgba(79,140,255,.4);
+}
+
+.project-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:1rem;
+    margin-bottom:1rem;
+}
+
+.project-tech{
+    color:var(--primary-light);
+    font-size:.9rem;
+    font-weight:600;
+}
+
+.before-after{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:2rem;
+    margin-top:1.5rem;
+}
+
+.box{
+    background:var(--card);
+    border-radius:12px;
+    padding:1rem;
+}
+
+.box h4{
+    margin-bottom:1rem;
+}
+
+.before h4{
+    color:#ff7676;
+}
+
+.after h4{
+    color:var(--success);
+}
+
+ul{
+    padding-left:1.2rem;
+}
+
+footer{
+    border-top:1px solid var(--border);
+    text-align:center;
+    padding:3rem 0;
+}
+
+.contact-card{
+    background:var(--bg-light);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:3rem;
+    text-align:center;
+}
+
+.contact-card a{
+    color:var(--primary-light);
+    text-decoration:none;
+}
+
+.fade{
+    opacity:0;
+    transform:translateY(30px);
+    transition:all .8s ease;
+}
+
+.fade.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+@media(max-width:768px){
+
+    .about{
+        grid-template-columns:1fr;
+    }
+
+    .before-after{
+        grid-template-columns:1fr;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    h1{
+        font-size:3rem;
+    }
+}
+</style>
+</head>
+<body>
+
+<nav>
+    <div class="container nav-content">
+        <div class="logo">CHEFREL BARACOL</div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<header class="hero container">
+    <div class="hero-content">
+        <div class="badge">Business Process Automation & Operational Efficiency Specialist</div>
+
+        <h1>
+            I Build Software That
+            <span class="gradient">Eliminates Repetitive Work</span>
+        </h1>
+
+        <p class="subtitle">
+            Web Developer • Odoo Developer • Automation Engineer
+            <br><br>
+            Helping businesses reduce manual work, prevent human errors,
+            and scale operations through custom software solutions.
+        </p>
+
+        <div class="cta">
+            <a href="#projects" class="btn btn-primary">View Projects</a>
+            <a href="mailto:chefrel.baracol@gmail.com" class="btn btn-outline">Contact Me</a>
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <h3>8,000+</h3>
+                <p>Documents exported automatically</p>
+            </div>
+
+            <div class="stat">
+                <h3>36</h3>
+                <p>Cheques printed in one batch</p>
+            </div>
+
+            <div class="stat">
+                <h3>20+</h3>
+                <p>Email segments automated per campaign</p>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section id="about">
+    <div class="container">
+        <h2 class="section-title">About Me</h2>
+
+        <div class="about">
+            <div>
+                <p>
+                    Most businesses lose hundreds of hours every year performing repetitive tasks.
+                </p>
+
+                <br>
+
+                <p>
+                    My specialty is identifying operational bottlenecks and
+                    building software that transforms multi-hour manual processes
+                    into one-click workflows.
+                </p>
+
+                <br>
+
+                <p>
+                    From ERP systems and browser automation to print-on-demand
+                    production tools and workflow monitoring platforms,
+                    I focus on solutions that create measurable business impact.
+                </p>
+            </div>
+
+            <div class="skills">
+                <div class="skill">Python</div>
+                <div class="skill">JavaScript</div>
+                <div class="skill">Odoo</div>
+                <div class="skill">OWL</div>
+                <div class="skill">Chrome Extensions</div>
+                <div class="skill">Automation</div>
+                <div class="skill">ERP Development</div>
+                <div class="skill">Web Scraping</div>
+                <div class="skill">Business Workflows</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="projects">
+<div class="container">
+
+<h2 class="section-title">Featured Projects</h2>
+
+<div class="projects">
+
+<div class="project fade">
+<h3>Cheque Auto Fill-Out & Batch Printing</h3>
+<div class="project-tech">Visual Basic</div>
+
+<div class="before-after">
+<div class="box before">
+<h4>Before</h4>
+<ul>
+<li>Manual cheque writing</li>
+<li>36 cheques per client</li>
+<li>Date and amount entered repeatedly</li>
+</ul>
+</div>
+
+<div class="box after">
+<h4>After</h4>
+<ul>
+<li>Load all cheques at once</li>
+<li>Input details once</li>
+<li>Auto-increment dates</li>
+<li>Batch printing</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="project fade">
+<h3>Student Document Export Automation</h3>
+<div class="project-tech">C# Desktop Automation</div>
+
+<p>
+Automatically exported approximately 8,000 PDF documents without requiring
+manual selection and export of each student record.
+</p>
+</div>
+
+<div class="project fade">
+<h3>Email Marketing Assistant</h3>
+<div class="project-tech">Chrome Extension</div>
+
+<p>
+Automated campaign creation, segment scheduling,
+UTM population, and QA validation across multiple email segments.
+</p>
+</div>
+
+<div class="project fade">
+<h3>Sticker Print-On-Demand Automation</h3>
+<div class="project-tech">JavaScript + Python</div>
+
+<p>
+Automatically generated personalized sticker layouts,
+optimized material usage, attached cut vectors,
+and executed batch print-and-cut workflows.
+</p>
+</div>
+
+<div class="project fade">
+<h3>ERP Workflow Monitoring Platform</h3>
+<div class="project-tech">Python + JavaScript + Odoo</div>
+
+<p>
+Centralized procurement, inventory, logistics,
+and product sampling workflows into a single ERP platform.
+</p>
+</div>
+
+<div class="project fade">
+<h3>Micro Automations Collection</h3>
+<div class="project-tech">JavaScript</div>
+
+<p>
+Bookmarklets, browser automation scripts, web scraping tools,
+and developer-panel automations that eliminate repetitive daily tasks.
+</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="contact">
+<div class="container">
+
+<div class="contact-card">
+<h2>Let's Automate Something</h2>
+
+<br>
+
+<p>
+Interested in improving operational efficiency,
+reducing repetitive work, or building custom business tools?
+</p>
+
+<br>
+
+<p>
+📧 <a href="mailto:chefrel.baracol@gmail.com">
+chefrel.baracol@gmail.com
+</a>
+</p>
+
+</div>
+
+</div>
+</section>
+
+<footer>
+<div class="container">
+© 2026 Chefrel Baracol. Built with HTML, CSS and JavaScript.
+</div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add('show');
+        }
+    });
+});
+
+document.querySelectorAll('.fade').forEach(el => {
+    observer.observe(el);
+});
+</script>
+
+</body>
+</html>
