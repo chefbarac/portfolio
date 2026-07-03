@@ -20,7 +20,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Chefrel Baracol | Business Process Automation Specialist</title>
 
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+        <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png" />
+        <link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png" />
+        <link rel="shortcut icon" href="favicon.ico" />
+        <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
         <style>
             :root {
@@ -32,7 +38,9 @@
                 --text: #f5f7fa;
                 --muted: #9aa7bd;
                 --success: #00d084;
+                --amber: #ffb454;
                 --border: rgba(255, 255, 255, 0.08);
+                --mono: "IBM Plex Mono", ui-monospace, monospace;
             }
 
             * {
@@ -45,11 +53,30 @@
                 scroll-behavior: smooth;
             }
 
+            @media (prefers-reduced-motion: reduce) {
+                html {
+                    scroll-behavior: auto;
+                }
+                * {
+                    animation-duration: 0.01ms !important;
+                    animation-iteration-count: 1 !important;
+                    transition-duration: 0.01ms !important;
+                }
+            }
+
             body {
                 font-family: "Inter", sans-serif;
                 background: var(--bg);
+                background-image: radial-gradient(circle at 15% 0%, rgba(79, 140, 255, 0.08), transparent 45%), radial-gradient(circle at 85% 15%, rgba(0, 208, 132, 0.06), transparent 40%);
                 color: var(--text);
                 line-height: 1.7;
+            }
+
+            a:focus-visible,
+            button:focus-visible {
+                outline: 2px solid var(--primary-light);
+                outline-offset: 3px;
+                border-radius: 4px;
             }
 
             .container {
@@ -76,6 +103,21 @@
             .logo {
                 font-weight: 800;
                 letter-spacing: 0.08em;
+                display: flex;
+                align-items: center;
+                gap: 0.6rem;
+            }
+
+            .logo .ver {
+                font-family: var(--mono);
+                font-weight: 500;
+                font-size: 0.7rem;
+                letter-spacing: 0.03em;
+                color: var(--success);
+                background: rgba(0, 208, 132, 0.12);
+                border: 1px solid rgba(0, 208, 132, 0.3);
+                padding: 0.2rem 0.5rem;
+                border-radius: 999px;
             }
 
             .nav-links {
@@ -128,7 +170,42 @@
             .subtitle {
                 font-size: 1.3rem;
                 color: var(--muted);
+                margin-bottom: 1.5rem;
+            }
+
+            .status-line {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.6rem;
+                font-family: var(--mono);
+                font-size: 0.85rem;
+                color: var(--success);
+                background: rgba(0, 208, 132, 0.08);
+                border: 1px solid rgba(0, 208, 132, 0.2);
+                padding: 0.55rem 1rem;
+                border-radius: 10px;
                 margin-bottom: 2rem;
+            }
+
+            .pulse-dot {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: var(--success);
+                flex-shrink: 0;
+                animation: pulse 2s infinite;
+            }
+
+            @keyframes pulse {
+                0% {
+                    box-shadow: 0 0 0 0 rgba(0, 208, 132, 0.5);
+                }
+                70% {
+                    box-shadow: 0 0 0 8px rgba(0, 208, 132, 0);
+                }
+                100% {
+                    box-shadow: 0 0 0 0 rgba(0, 208, 132, 0);
+                }
             }
 
             .cta {
@@ -160,6 +237,11 @@
                 color: white;
             }
 
+            .btn-outline:hover {
+                border-color: rgba(255, 255, 255, 0.25);
+                transform: translateY(-2px);
+            }
+
             .stats {
                 display: grid;
                 grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -172,11 +254,24 @@
                 border: 1px solid var(--border);
                 border-radius: 16px;
                 padding: 1.5rem;
+                transition: 0.3s;
+            }
+
+            .stat:hover {
+                border-color: rgba(79, 140, 255, 0.35);
+                transform: translateY(-3px);
             }
 
             .stat h3 {
+                font-family: var(--mono);
                 color: var(--primary-light);
                 font-size: 2rem;
+            }
+
+            .stat p {
+                color: var(--muted);
+                font-size: 0.9rem;
+                margin-top: 0.3rem;
             }
 
             section {
@@ -210,6 +305,8 @@
                 border-radius: 999px;
                 background: var(--card);
                 border: 1px solid var(--border);
+                font-family: var(--mono);
+                font-size: 0.85rem;
             }
 
             .projects {
@@ -230,6 +327,11 @@
                 border-color: rgba(79, 140, 255, 0.4);
             }
 
+            .project.featured {
+                border-color: rgba(0, 208, 132, 0.35);
+                background: linear-gradient(160deg, rgba(0, 208, 132, 0.06), var(--bg-light) 45%);
+            }
+
             .project-header {
                 display: flex;
                 justify-content: space-between;
@@ -239,10 +341,81 @@
                 margin-bottom: 1rem;
             }
 
+            .project-header h3 {
+                display: flex;
+                align-items: center;
+                gap: 0.7rem;
+                flex-wrap: wrap;
+            }
+
+            .project-meta {
+                display: flex;
+                align-items: center;
+                gap: 0.6rem;
+                flex-wrap: wrap;
+            }
+
             .project-tech {
                 color: var(--primary-light);
-                font-size: 0.9rem;
-                font-weight: 600;
+                font-family: var(--mono);
+                font-size: 0.85rem;
+                font-weight: 500;
+            }
+
+            .tag {
+                font-family: var(--mono);
+                font-size: 0.7rem;
+                letter-spacing: 0.04em;
+                padding: 0.3rem 0.6rem;
+                border-radius: 6px;
+                text-transform: uppercase;
+                display: inline-flex;
+                align-items: center;
+                gap: 0.4rem;
+                white-space: nowrap;
+            }
+
+            .tag-live {
+                background: rgba(0, 208, 132, 0.12);
+                color: var(--success);
+                border: 1px solid rgba(0, 208, 132, 0.3);
+            }
+
+            .tag-live .pulse-dot {
+                width: 6px;
+                height: 6px;
+            }
+
+            .tag-internal {
+                background: rgba(79, 140, 255, 0.12);
+                color: var(--primary-light);
+                border: 1px solid rgba(79, 140, 255, 0.25);
+            }
+
+            .tag-archive {
+                background: rgba(255, 180, 84, 0.1);
+                color: var(--amber);
+                border: 1px solid rgba(255, 180, 84, 0.25);
+            }
+
+            .live-link {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.4rem;
+                color: var(--success);
+                text-decoration: none;
+                font-family: var(--mono);
+                font-size: 0.85rem;
+                font-weight: 500;
+                border: 1px solid rgba(0, 208, 132, 0.3);
+                padding: 0.5rem 0.9rem;
+                border-radius: 10px;
+                transition: 0.3s;
+            }
+
+            .live-link:hover {
+                background: rgba(0, 208, 132, 0.1);
+                transform: translateY(-2px);
             }
 
             .before-after {
@@ -277,20 +450,123 @@
             footer {
                 border-top: 1px solid var(--border);
                 text-align: center;
-                padding: 3rem 0;
+                padding: 4rem 0 3rem;
+                color: var(--muted);
+            }
+
+            .footer-mark {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: var(--success);
+                margin: 0 auto 1.6rem;
+                animation: pulse 2s infinite;
+            }
+
+            .footer-quote {
+                position: relative;
+                max-width: 560px;
+                margin: 0 auto;
+                font-size: 1.35rem;
+                line-height: 1.5;
+                font-weight: 500;
+                color: var(--text);
+            }
+
+            .footer-quote::before,
+            .footer-quote::after {
+                content: '"';
+                color: var(--primary-light);
+                opacity: 0.5;
+            }
+
+            .footer-signature {
+                margin-top: 1.2rem;
+                font-family: var(--mono);
+                font-size: 0.8rem;
+                letter-spacing: 0.05em;
+                color: var(--muted);
+            }
+
+            .footer-signature span {
+                color: var(--primary-light);
+            }
+
+            .footer-copyright {
+                margin-top: 2.5rem;
+                padding-top: 1.5rem;
+                border-top: 1px solid var(--border);
+                font-family: var(--mono);
+                font-size: 0.75rem;
+                color: var(--muted);
+                opacity: 0.7;
             }
 
             .contact-card {
+                position: relative;
+                overflow: hidden;
                 background: var(--bg-light);
+                background-image: radial-gradient(circle at 50% 0%, rgba(79, 140, 255, 0.12), transparent 55%);
                 border: 1px solid var(--border);
                 border-radius: 20px;
-                padding: 3rem;
+                padding: 3.5rem 3rem;
                 text-align: center;
             }
 
-            .contact-card a {
+            .contact-card::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 3px;
+                background: linear-gradient(90deg, transparent, var(--primary), var(--success), transparent);
+            }
+
+            .contact-card .status-line {
+                margin: 0 auto 1.5rem;
+            }
+
+            .contact-card h2 {
+                font-size: 2.2rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .contact-card .contact-lead {
+                color: var(--muted);
+                max-width: 520px;
+                margin: 0 auto;
+            }
+
+            .contact-actions {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 1rem;
+                flex-wrap: wrap;
+                margin-top: 2.2rem;
+            }
+
+            .contact-card a.btn {
+                text-decoration: none;
+            }
+
+            .contact-fineprint {
+                margin-top: 1.8rem;
+                color: var(--muted);
+                font-family: var(--mono);
+                font-size: 0.8rem;
+                letter-spacing: 0.02em;
+            }
+
+            .contact-fineprint a {
                 color: var(--primary-light);
                 text-decoration: none;
+                border-bottom: 1px dotted rgba(130, 172, 255, 0.4);
+            }
+
+            .contact-fineprint a:hover {
+                border-bottom-style: solid;
             }
 
             .fade {
@@ -326,7 +602,7 @@
     <body>
         <nav>
             <div class="container nav-content">
-                <div class="logo">CHEFREL BARACOL</div>
+                <div class="logo">CHEFREL BARACOL <span class="ver">since 2018</span></div>
                 <div class="nav-links">
                     <a href="#about">About</a>
                     <a href="#projects">Projects</a>
@@ -350,6 +626,11 @@
                     Helping businesses reduce manual work, prevent human errors, and scale operations through custom software solutions.
                 </p>
 
+                <div class="status-line">
+                    <span class="pulse-dot"></span>
+                    Deploying production automation systems since 2018
+                </div>
+
                 <div class="cta">
                     <a href="#projects" class="btn btn-primary">View Projects</a>
                     <a href="mailto:chefrel.baracol@gmail.com" class="btn btn-outline">Contact Me</a>
@@ -369,6 +650,21 @@
                     <div class="stat">
                         <h3>36</h3>
                         <p>Cheques printed in one click</p>
+                    </div>
+
+                    <div class="stat">
+                        <h3>23</h3>
+                        <p>Odoo custom modules created</p>
+                    </div>
+
+                    <div class="stat">
+                        <h3>20+</h3>
+                        <p>Email segments automated per campaign</p>
+                    </div>
+
+                    <div class="stat">
+                        <h3>8</h3>
+                        <p>Internal business tools deployed to production</p>
                     </div>
                 </div>
             </div>
@@ -390,6 +686,7 @@
 
                         <p>
                             From ERP systems and browser automation to print-on-demand production tools and workflow monitoring platforms, I focus on solutions that create measurable business impact.
+                            I've been shipping systems into production since 2018.
                         </p>
                     </div>
 
@@ -413,11 +710,55 @@
         <section id="projects">
             <div class="container">
                 <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">A mix of public-facing products and internal tools running in production.</p>
 
                 <div class="projects">
+                    <div class="project featured fade">
+                        <div class="project-header">
+                            <h3>
+                                Ukay Finds — Online Product Catalog
+                                <span class="tag tag-live"><span class="pulse-dot"></span>Live</span>
+                            </h3>
+                            <div class="project-meta">
+                                <span class="project-tech">JavaScript · GitHub Pages</span>
+                                <a href="https://chefbarac.github.io/ukayfinds/" target="_blank" rel="noopener" class="live-link">View Live Site ↗</a>
+                            </div>
+                        </div>
+
+                        <p>
+                            A public-facing product catalog built for a resale business, replacing manual Facebook posts with a searchable storefront. Shoppers browse live inventory by collection,
+                            size, and status, save favorites, and message the seller directly to reserve an item.
+                        </p>
+
+                        <div class="before-after">
+                            <div class="box before">
+                                <h4>Before</h4>
+                                <ul>
+                                    <li>Inventory scattered across Facebook posts</li>
+                                    <li>No way to filter or search stock</li>
+                                    <li>Buyers had to scroll and DM to check availability</li>
+                                </ul>
+                            </div>
+
+                            <div class="box after">
+                                <h4>After</h4>
+                                <ul>
+                                    <li>Searchable catalog with collection and size filters</li>
+                                    <li>Favorites list for shoppers</li>
+                                    <li>One-tap reserve via Messenger</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="project fade">
-                        <h3>Cheque Auto Fill-Out & Batch Printing (2018 Intern Project)</h3>
-                        <div class="project-tech">Visual Basic</div>
+                        <div class="project-header">
+                            <h3>
+                                Cheque Auto Fill-Out & Batch Printing
+                                <span class="tag tag-archive">2018</span>
+                            </h3>
+                            <span class="project-tech">Visual Basic</span>
+                        </div>
 
                         <div class="before-after">
                             <div class="box before">
@@ -442,15 +783,25 @@
                     </div>
 
                     <div class="project fade">
-                        <h3>Student Document Export Automation</h3>
-                        <div class="project-tech">C# Desktop Automation</div>
+                        <div class="project-header">
+                            <h3>
+                                Student Document Export Automation
+                                <span class="tag tag-internal">Internal</span>
+                            </h3>
+                            <span class="project-tech">C# Desktop Automation</span>
+                        </div>
 
                         <p>Automatically exported approximately 8,000 PDF documents without requiring manual selection and export of each student record.</p>
                     </div>
 
                     <div class="project fade">
-                        <h3>Student ID Layout & Printing Automation</h3>
-                        <div class="project-tech">Visual Basic</div>
+                        <div class="project-header">
+                            <h3>
+                                Student ID Layout & Printing Automation
+                                <span class="tag tag-internal">Internal</span>
+                            </h3>
+                            <span class="project-tech">Visual Basic</span>
+                        </div>
 
                         <p>
                             Developed an automated ID printing system capable of processing and printing 100 PVC IDs per batch, eliminating repetitive manual steps and significantly speeding up
@@ -459,29 +810,49 @@
                     </div>
 
                     <div class="project fade">
-                        <h3>Email Marketing Assistant</h3>
-                        <div class="project-tech">Chrome Extension</div>
+                        <div class="project-header">
+                            <h3>
+                                Email Marketing Assistant
+                                <span class="tag tag-internal">Internal</span>
+                            </h3>
+                            <span class="project-tech">Chrome Extension</span>
+                        </div>
 
                         <p>Built automation to generate and populate campaign data (UTM + segment details), spawn 20+ Chrome tabs per segment, and run QA validation across multiple email segments.</p>
                     </div>
 
                     <div class="project fade">
-                        <h3>Sticker Print-On-Demand Automation</h3>
-                        <div class="project-tech">JavaScript + Python</div>
+                        <div class="project-header">
+                            <h3>
+                                Sticker Print-On-Demand Automation
+                                <span class="tag tag-internal">Internal</span>
+                            </h3>
+                            <span class="project-tech">JavaScript + Python + Inkscape</span>
+                        </div>
 
                         <p>Automatically generated personalized sticker layouts, optimized material usage, attached cut vectors, and executed batch print-and-cut workflows.</p>
                     </div>
 
                     <div class="project fade">
-                        <h3>ERP Workflow Monitoring Platform</h3>
-                        <div class="project-tech">Python + JavaScript + Odoo</div>
+                        <div class="project-header">
+                            <h3>
+                                ERP Workflow Monitoring Platform
+                                <span class="tag tag-internal">Internal</span>
+                            </h3>
+                            <span class="project-tech">Python + JavaScript + Odoo</span>
+                        </div>
 
                         <p>Centralized procurement, inventory, logistics, and product sampling workflows into a single ERP platform.</p>
                     </div>
 
                     <div class="project fade">
-                        <h3>Micro Automations Collection</h3>
-                        <div class="project-tech">JavaScript</div>
+                        <div class="project-header">
+                            <h3>
+                                Micro Automations Collection
+                                <span class="tag tag-internal">Internal</span>
+                            </h3>
+                            <span class="project-tech">JavaScript</span>
+                        </div>
 
                         <p>Bookmarklets, browser automation scripts (ClickUp Timesheet Extractor), web scraping tools, and developer-panel automations that eliminate repetitive daily tasks.</p>
                     </div>
@@ -491,22 +862,35 @@
 
         <section id="contact">
             <div class="container">
-                <div class="contact-card">
-                    <h2>Let's Automate Something</h2>
+                <div class="contact-card fade">
+                    <div class="status-line">
+                        <span class="pulse-dot"></span>
+                        Open to new automation projects
+                    </div>
 
-                    <br />
+                    <h2>Got a process that eats up your team's week?</h2>
 
-                    <p>Interested in improving operational efficiency, reducing repetitive work, or building custom business tools?</p>
+                    <p class="contact-lead">
+                        Tell me what's manual today — exports, printing runs, ERP busywork, anything repetitive — and I'll tell you what it would take to turn it into a one-click workflow.
+                    </p>
 
-                    <br />
+                    <div class="contact-actions">
+                        <a href="mailto:chefrel.baracol@gmail.com" class="btn btn-primary">📧 Email Me</a>
+                        <a href="https://chefbarac.github.io/ukayfinds/" target="_blank" rel="noopener" class="btn btn-outline">See My Work Live ↗</a>
+                    </div>
 
-                    <p>📧 <a href="mailto:chefrel.baracol@gmail.com"> chefrel.baracol@gmail.com </a></p>
+                    <p class="contact-fineprint"><a href="mailto:chefrel.baracol@gmail.com">chefrel.baracol@gmail.com</a> · usually replies within a day</p>
                 </div>
             </div>
         </section>
 
         <footer>
-            <div class="container">Chefrel Baracol. Do something today that your future self will thank you for.</div>
+            <div class="container">
+                <div class="footer-mark"></div>
+                <p class="footer-quote">Do something today that your future self will thank you for.</p>
+                <p class="footer-signature">— <span>Chefrel Baracol</span> · automating one workflow at a time</p>
+                <p class="footer-copyright">© 2026 Chefrel Baracol. Building &amp; deploying since 2018.</p>
+            </div>
         </footer>
 
         <script>

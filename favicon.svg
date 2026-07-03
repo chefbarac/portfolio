@@ -1,0 +1,19 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg" cx="30%" cy="15%" r="90%">
+      <stop offset="0%" stop-color="#182236"/>
+      <stop offset="100%" stop-color="#0b0f19"/>
+    </radialGradient>
+    <linearGradient id="letters" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#82acff"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="256" height="256" rx="56" fill="url(#bg)"/>
+
+  <text x="128" y="163" font-family="'IBM Plex Mono', 'Courier New', monospace" font-weight="700" font-size="128" letter-spacing="-6" text-anchor="middle" fill="url(#letters)">CB</text>
+
+  <!-- live status dot -->
+  <circle cx="196" cy="62" r="16" fill="#00d084"/>
+</svg>
