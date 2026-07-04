@@ -18,7 +18,12 @@
 
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Chefrel Baracol | Business Process Automation Specialist</title>
+        <title>Chefrel Baracol | Odoo Developer & Business Process Automation Specialist, Philippines</title>
+        <meta
+            name="description"
+            content="Chefrel Baracol is an Odoo developer and business process automation specialist based in the Philippines. I build ERP modules, browser automation, and internal tools that turn multi-hour manual workflows into one-click processes."
+        />
+        <link rel="canonical" href="https://chefbarac.github.io/portfolio/" />
 
         <link rel="icon" href="favicon.svg" type="image/svg+xml" />
         <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png" />
@@ -27,11 +32,29 @@
         <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 
         <!-- Facebook -->
-        <meta property="og:title" content="Chefrel Baracol | Business process automation specialist." />
+        <meta property="og:title" content="Chefrel Baracol | Odoo Developer & Business Process Automation Specialist, Philippines" />
         <meta property="og:description" content="I Build Software That Eliminates Repetitive Work." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://chefbarac.github.io/portfolio/" />
         <meta property="og:image" content="https://chefbarac.github.io/portfolio/logo-512.png" />
+
+        <!-- Structured data for search engines -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "Person",
+                "name": "Chefrel Baracol",
+                "url": "https://chefbarac.github.io/portfolio/",
+                "jobTitle": "Business Process Automation Specialist & Odoo Developer",
+                "email": "mailto:chefrel.baracol@gmail.com",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressCountry": "PH"
+                },
+                "knowsAbout": ["Odoo Development", "Business Process Automation", "ERP Systems", "Python", "JavaScript", "Browser Automation"],
+                "sameAs": ["https://chefbarac.github.io/ukayfinds/"]
+            }
+        </script>
 
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
@@ -301,6 +324,23 @@
                 gap: 3rem;
             }
 
+            .skill-group {
+                margin-bottom: 1.6rem;
+            }
+
+            .skill-group:last-child {
+                margin-bottom: 0;
+            }
+
+            .skill-group-title {
+                font-family: var(--mono);
+                font-size: 0.75rem;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                color: var(--muted);
+                margin-bottom: 0.8rem;
+            }
+
             .skills {
                 display: flex;
                 flex-wrap: wrap;
@@ -452,6 +492,26 @@
                 color: var(--success);
             }
 
+            .result-line {
+                display: flex;
+                align-items: center;
+                gap: 0.6rem;
+                margin-top: 1.5rem;
+                padding: 0.9rem 1.1rem;
+                background: rgba(0, 208, 132, 0.08);
+                border: 1px solid rgba(0, 208, 132, 0.25);
+                border-radius: 12px;
+                font-family: var(--mono);
+                font-size: 0.85rem;
+                color: var(--success);
+            }
+
+            .result-line strong {
+                color: var(--text);
+                font-family: "Inter", sans-serif;
+                font-weight: 600;
+            }
+
             ul {
                 padding-left: 1.2rem;
             }
@@ -499,6 +559,14 @@
 
             .footer-signature span {
                 color: var(--primary-light);
+            }
+
+            .footer-location {
+                margin-top: 0.6rem;
+                font-family: var(--mono);
+                font-size: 0.78rem;
+                color: var(--muted);
+                opacity: 0.85;
             }
 
             .footer-copyright {
@@ -611,7 +679,7 @@
     <body>
         <nav>
             <div class="container nav-content">
-                <div class="logo">CHEFREL BARACOL <span class="ver">since 2018</span></div>
+                <div class="logo">CHEFREL BARACOL <span class="ver">7+ yrs shipping</span></div>
                 <div class="nav-links">
                     <a href="#about">About</a>
                     <a href="#projects">Projects</a>
@@ -634,6 +702,8 @@
                     <br /><br />
                     Helping businesses reduce manual work, prevent human errors, and scale operations through custom software solutions.
                 </p>
+
+                <p style="font-family: var(--mono); font-size: 0.85rem; color: var(--muted); margin-bottom: 1.2rem">📍 Based in the Philippines (GMT+8) · Available for remote & freelance work</p>
 
                 <div class="status-line">
                     <span class="pulse-dot"></span>
@@ -695,23 +765,52 @@
 
                         <p>
                             From ERP systems and browser automation to print-on-demand production tools and workflow monitoring platforms, I focus on solutions that create measurable business impact.
-                            I've been shipping systems into production since 2018.
+                            I've been shipping systems into production for 7+ years, since 2018.
                         </p>
+
+                        <br />
+
+                        <a
+                            href="resume.pdf"
+                            target="_blank"
+                            rel="noopener"
+                            class="live-link"
+                            style="border-color: rgba(79, 140, 255, 0.3); color: var(--primary-light)"
+                        >
+                            📄 Download Resume ↗
+                        </a>
                     </div>
 
-                    <div class="skills">
-                        <div class="skill">Python</div>
-                        <div class="skill">JavaScript</div>
-                        <div class="skill">Odoo</div>
-                        <div class="skill">Automation</div>
-                        <div class="skill">OWL.js</div>
-                        <div class="skill">Vite</div>
-                        <div class="skill">Bootstrap</div>
-                        <div class="skill">SCSS</div>
-                        <div class="skill">Chrome Extensions</div>
-                        <div class="skill">ERP Development</div>
-                        <div class="skill">Web Scraping</div>
-                        <div class="skill">Business Workflows</div>
+                    <div>
+                        <div class="skill-group">
+                            <div class="skill-group-title">Languages</div>
+                            <div class="skills">
+                                <div class="skill">Python</div>
+                                <div class="skill">JavaScript</div>
+                                <div class="skill">SCSS</div>
+                            </div>
+                        </div>
+
+                        <div class="skill-group">
+                            <div class="skill-group-title">Frameworks & Tools</div>
+                            <div class="skills">
+                                <div class="skill">OWL.js</div>
+                                <div class="skill">Vite</div>
+                                <div class="skill">Bootstrap</div>
+                                <div class="skill">Chrome Extensions</div>
+                            </div>
+                        </div>
+
+                        <div class="skill-group">
+                            <div class="skill-group-title">Automation & Platforms</div>
+                            <div class="skills">
+                                <div class="skill">Odoo</div>
+                                <div class="skill">ERP Development</div>
+                                <div class="skill">Automation</div>
+                                <div class="skill">Web Scraping</div>
+                                <div class="skill">Business Workflows</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -817,6 +916,8 @@
                             Developed an automated ID printing system capable of processing and printing 100 PVC IDs per batch, eliminating repetitive manual steps and significantly speeding up
                             production.
                         </p>
+
+                        <div class="result-line">📈 <strong>Result:</strong>&nbsp;scaled daily output from ~50 IDs/day (manual) to 500+ IDs/day.</div>
                     </div>
 
                     <div class="project fade">
@@ -829,6 +930,8 @@
                         </div>
 
                         <p>Built automation to generate and populate campaign data (UTM + segment details), spawn 20+ Chrome tabs per segment, and run QA validation across multiple email segments.</p>
+
+                        <div class="result-line">📈 <strong>Result:</strong>&nbsp;cut campaign setup time from ~30 minutes down to under 5 minutes per send.</div>
                     </div>
 
                     <div class="project fade">
@@ -864,7 +967,10 @@
                             <span class="project-tech">JavaScript</span>
                         </div>
 
-                        <p>Bookmarklets, browser automation scripts (ClickUp Timesheet Extractor), web scraping tools, and developer-panel automations that eliminate repetitive daily tasks.</p>
+                        <p>
+                            A set of small, focused tools built to remove daily friction — including a ClickUp Timesheet Extractor that pulls logged hours straight into a report instead of
+                            manual copy-paste, plus browser bookmarklets and developer-panel scripts for recurring QA and data-entry tasks.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -899,7 +1005,8 @@
                 <div class="footer-mark"></div>
                 <p class="footer-quote">Do something today that your future self will thank you for.</p>
                 <p class="footer-signature">— <span>Chefrel Baracol</span> · automating one workflow at a time</p>
-                <p class="footer-copyright">© 2026 Chefrel Baracol. Building &amp; deploying since 2018.</p>
+                <p class="footer-location">📍 Philippines (GMT+8) · Odoo Developer & Automation Specialist</p>
+                <p class="footer-copyright">© 2026 Chefrel Baracol. 7+ years turning manual work into automated systems.</p>
             </div>
         </footer>
 
