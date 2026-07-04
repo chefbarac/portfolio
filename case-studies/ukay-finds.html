@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Case Study: Ukay Finds — Chefrel Baracol</title>
+        <meta
+            name="description"
+            content="Case study: how Chefrel Baracol replaced manual Facebook-post inventory with a searchable online product catalog for a resale business — built with vanilla JavaScript and GitHub Pages."
+        />
+        <link rel="canonical" href="https://chefbarac.github.io/portfolio/case-studies/ukay-finds.html" />
+
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+        <style>
+            :root {
+                --bg: #0b0f19;
+                --bg-light: #121826;
+                --card: #161f33;
+                --primary: #4f8cff;
+                --primary-light: #82acff;
+                --text: #f5f7fa;
+                --muted: #9aa7bd;
+                --success: #00d084;
+                --amber: #ffb454;
+                --border: rgba(255, 255, 255, 0.08);
+                --mono: "IBM Plex Mono", ui-monospace, monospace;
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                font-family: "Inter", sans-serif;
+                background: var(--bg);
+                background-image: radial-gradient(circle at 15% 0%, rgba(79, 140, 255, 0.08), transparent 45%), radial-gradient(circle at 85% 15%, rgba(0, 208, 132, 0.06), transparent 40%);
+                color: var(--text);
+                line-height: 1.7;
+            }
+
+            a:focus-visible {
+                outline: 2px solid var(--primary-light);
+                outline-offset: 3px;
+                border-radius: 4px;
+            }
+
+            .container {
+                width: min(880px, 92%);
+                margin: auto;
+            }
+
+            nav {
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+                backdrop-filter: blur(12px);
+                background: rgba(11, 15, 25, 0.8);
+                border-bottom: 1px solid var(--border);
+                padding: 1rem 0;
+            }
+
+            .back-link {
+                color: var(--muted);
+                text-decoration: none;
+                font-family: var(--mono);
+                font-size: 0.85rem;
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .back-link:hover {
+                color: var(--primary-light);
+            }
+
+            header.hero {
+                padding: 4.5rem 0 3rem;
+            }
+
+            .eyebrow {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.6rem;
+                font-family: var(--mono);
+                font-size: 0.85rem;
+                color: var(--success);
+                background: rgba(0, 208, 132, 0.08);
+                border: 1px solid rgba(0, 208, 132, 0.2);
+                padding: 0.5rem 1rem;
+                border-radius: 10px;
+                margin-bottom: 1.5rem;
+            }
+
+            .pulse-dot {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: var(--success);
+                flex-shrink: 0;
+                animation: pulse 2s infinite;
+            }
+
+            @keyframes pulse {
+                0% { box-shadow: 0 0 0 0 rgba(0, 208, 132, 0.5); }
+                70% { box-shadow: 0 0 0 8px rgba(0, 208, 132, 0); }
+                100% { box-shadow: 0 0 0 0 rgba(0, 208, 132, 0); }
+            }
+
+            h1 {
+                font-size: clamp(2.2rem, 5vw, 3.2rem);
+                line-height: 1.1;
+                margin-bottom: 1rem;
+            }
+
+            .gradient {
+                background: linear-gradient(135deg, #4f8cff, #82acff);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            .lead {
+                font-size: 1.15rem;
+                color: var(--muted);
+                max-width: 640px;
+            }
+
+            .meta-row {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.8rem;
+                margin-top: 2rem;
+            }
+
+            .meta-chip {
+                font-family: var(--mono);
+                font-size: 0.8rem;
+                padding: 0.5rem 0.9rem;
+                border-radius: 999px;
+                background: var(--card);
+                border: 1px solid var(--border);
+                color: var(--primary-light);
+            }
+
+            .live-link {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.4rem;
+                color: var(--success);
+                text-decoration: none;
+                font-family: var(--mono);
+                font-size: 0.85rem;
+                font-weight: 500;
+                border: 1px solid rgba(0, 208, 132, 0.3);
+                padding: 0.7rem 1.1rem;
+                border-radius: 10px;
+                transition: 0.3s;
+                margin-top: 2rem;
+            }
+
+            .live-link:hover {
+                background: rgba(0, 208, 132, 0.1);
+                transform: translateY(-2px);
+            }
+
+            section {
+                padding: 3rem 0;
+                border-top: 1px solid var(--border);
+            }
+
+            section h2 {
+                font-size: 1.7rem;
+                margin-bottom: 1.2rem;
+            }
+
+            section p {
+                margin-bottom: 1rem;
+                color: var(--text);
+            }
+
+            section p.muted {
+                color: var(--muted);
+            }
+
+            .two-col {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+
+            .box {
+                background: var(--card);
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                padding: 1.5rem;
+            }
+
+            .box h3 {
+                margin-bottom: 0.8rem;
+                font-size: 1.05rem;
+            }
+
+            .before h3 { color: #ff7676; }
+            .after h3 { color: var(--success); }
+
+            ul {
+                padding-left: 1.2rem;
+            }
+
+            li {
+                margin-bottom: 0.5rem;
+            }
+
+            .stack-list {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.7rem;
+                margin-top: 1rem;
+            }
+
+            .stack-item {
+                font-family: var(--mono);
+                font-size: 0.85rem;
+                padding: 0.6rem 0.9rem;
+                border-radius: 10px;
+                background: var(--bg-light);
+                border: 1px solid var(--border);
+            }
+
+            .result-strip {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 1rem;
+                margin-top: 1.5rem;
+            }
+
+            .result-card {
+                background: var(--bg-light);
+                border: 1px solid rgba(0, 208, 132, 0.25);
+                border-radius: 14px;
+                padding: 1.3rem;
+            }
+
+            .result-card h4 {
+                font-family: var(--mono);
+                color: var(--success);
+                font-size: 1.5rem;
+            }
+
+            .result-card p {
+                color: var(--muted);
+                font-size: 0.85rem;
+                margin-top: 0.3rem;
+                margin-bottom: 0;
+            }
+
+            blockquote {
+                border-left: 3px solid var(--primary);
+                padding-left: 1.2rem;
+                color: var(--muted);
+                font-style: italic;
+                margin: 1.5rem 0;
+            }
+
+            footer {
+                border-top: 1px solid var(--border);
+                text-align: center;
+                padding: 3rem 0;
+                color: var(--muted);
+                font-family: var(--mono);
+                font-size: 0.85rem;
+            }
+
+            footer a {
+                color: var(--primary-light);
+                text-decoration: none;
+            }
+
+            @media (max-width: 700px) {
+                .two-col {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <div class="container">
+                <a href="../index.html#projects" class="back-link">← Back to portfolio</a>
+            </div>
+        </nav>
+
+        <header class="hero container">
+            <div class="eyebrow"><span class="pulse-dot"></span>Case Study · Live Product</div>
+            <h1>Ukay Finds: turning a Facebook resale page into a <span class="gradient">searchable storefront</span></h1>
+            <p class="lead">
+                How a scrolling wall of Facebook posts became a fast, filterable product catalog — built solo, from problem definition to
+                production, using vanilla JavaScript and GitHub Pages.
+            </p>
+
+            <div class="meta-row">
+                <span class="meta-chip">Role: Sole Developer</span>
+                <span class="meta-chip">Stack: JavaScript, Vite, GitHub Pages</span>
+                <span class="meta-chip">Timeline: Design → Launch</span>
+            </div>
+
+            <a href="https://chefbarac.github.io/ukayfinds/" target="_blank" rel="noopener" class="live-link">View Live Site ↗</a>
+        </header>
+
+        <section id="problem">
+            <div class="container">
+                <h2>The Problem</h2>
+                <p>
+                    The client resells secondhand ("ukay-ukay") clothing and accessories, and like most small resale operations, ran the
+                    entire business through Facebook. Every new item meant a new post: a photo, a caption with size and price, and then
+                    fielding the same questions over and over in the comments — "Is this still available?", "What size is this?",
+                    "Can I reserve it?"
+                </p>
+                <p class="muted">
+                    As inventory grew, the page became unusable as a catalog. There was no way to search by size or collection, no way to
+                    see what was still in stock without scrolling through months of posts, and no way for shoppers to save items they liked
+                    for later. Every sale depended on the seller personally answering direct messages.
+                </p>
+            </div>
+        </section>
+
+        <section id="approach">
+            <div class="container">
+                <h2>The Approach</h2>
+                <p>
+                    Rather than build a full e-commerce platform with checkout and payments — overkill for a resale business that
+                    finalizes sales over Messenger — the goal was a lightweight, fast-loading browsing layer that plugs into the seller's
+                    existing workflow instead of replacing it.
+                </p>
+                <p>That meant three product decisions up front:</p>
+                <ul>
+                    <li><strong>Browsing, not buying.</strong> The catalog's job is to help shoppers find and reserve items, not process payment — that stays on Messenger, where the seller already operates.</li>
+                    <li><strong>Zero backend cost.</strong> Hosting on GitHub Pages meant no server bills and no infrastructure to maintain for a small side business.</li>
+                    <li><strong>Fast on a phone.</strong> Most of the seller's customers browse and shop from mobile, often on inconsistent data connections, so the site needed to stay light.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="build">
+            <div class="container">
+                <h2>What Was Built</h2>
+                <div class="two-col">
+                    <div class="box before">
+                        <h3>Before</h3>
+                        <ul>
+                            <li>Inventory scattered across individual Facebook posts</li>
+                            <li>No filtering by size, collection, or availability</li>
+                            <li>Buyers had to scroll and DM to check stock</li>
+                            <li>No way to save or shortlist items</li>
+                        </ul>
+                    </div>
+                    <div class="box after">
+                        <h3>After</h3>
+                        <ul>
+                            <li>Searchable catalog with collection and size filters</li>
+                            <li>Live availability status per item</li>
+                            <li>Favorites list so shoppers can build a shortlist</li>
+                            <li>One-tap reserve that hands off to Messenger</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p style="margin-top: 2rem">
+                    The interface is a single-page catalog built in JavaScript with Vite handling the build and dev tooling — fast hot
+                    reload during development and a lean, optimized bundle for production, without the overhead of a full framework for a
+                    project this size. Items are organized by collection and size, with client-side filtering so browsing feels instant.
+                    When a shopper finds something they want, "reserve" opens a pre-filled Messenger conversation, keeping the final step
+                    exactly where the seller already does business.
+                </p>
+
+                <div class="stack-list">
+                    <span class="stack-item">JavaScript</span>
+                    <span class="stack-item">Vite</span>
+                    <span class="stack-item">Client-side filtering</span>
+                    <span class="stack-item">Responsive layout</span>
+                    <span class="stack-item">GitHub Pages hosting</span>
+                    <span class="stack-item">Messenger handoff</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="results">
+            <div class="container">
+                <h2>Outcome</h2>
+                <p>
+                    The seller now manages a single source of truth for inventory instead of an ever-growing feed of posts, and shoppers can
+                    self-serve the browsing experience that used to require a direct message.
+                </p>
+                <div class="result-strip">
+                    <div class="result-card">
+                        <h4>0 → 1</h4>
+                        <p>Searchable catalog replacing scattered Facebook posts</p>
+                    </div>
+                    <div class="result-card">
+                        <h4>1-tap</h4>
+                        <p>Reserve flow straight into Messenger, no new checkout to learn</p>
+                    </div>
+                    <div class="result-card">
+                        <h4>$0</h4>
+                        <p>Hosting cost — static site on GitHub Pages</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="reflection">
+            <div class="container">
+                <h2>What I'd Improve Next</h2>
+                <p class="muted">
+                    Being candid about the roadmap: the next iteration would move availability status into a small structured data file (or
+                    lightweight CMS) so the seller can update stock without touching code, and add basic analytics to see which collections
+                    get the most interest. Both are scoped but not yet built.
+                </p>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <p><a href="../index.html">← Back to Chefrel Baracol's portfolio</a> · <a href="https://chefbarac.github.io/ukayfinds/" target="_blank" rel="noopener">View Ukay Finds live ↗</a></p>
+            </div>
+        </footer>
+    </body>
+</html>
